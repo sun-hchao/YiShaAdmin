@@ -13,6 +13,7 @@ namespace YiSha.Data
     {
         SqlServer,
         MySql,
-        Oracle
+        Oracle,
+        PostgreSQL
     }
 }

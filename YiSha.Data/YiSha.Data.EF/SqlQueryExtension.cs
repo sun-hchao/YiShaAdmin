@@ -42,6 +42,9 @@ namespace YiSha.Data.EF
                         break;
                     case "Oracle":
                         break;
+                    case "PostgreSQL":
+                        optionsBuilder.UseNpgsql(connection, options => options.EnableRetryOnFailure());
+                        break;
                     default:
                         throw new Exception("未找到数据库配置");
                 }

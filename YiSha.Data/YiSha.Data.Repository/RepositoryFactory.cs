@@ -29,6 +29,10 @@ namespace YiSha.Data.Repository
                     DbHelper.DbType = DatabaseType.Oracle;
                     // 支持Oracle或是更多数据库请参考上面SqlServer或是MySql的写法
                     break;
+                case "PostgreSQL":
+                    DbHelper.DbType = DatabaseType.PostgreSQL;
+                    database = new PostgreSQLDatabase(dbConnectionString);
+                    break;
                 default:
                     throw new Exception("未找到数据库配置");
             }

@@ -63,6 +63,32 @@ namespace YiSha.Data
             return sb;
         }
 
+        public static StringBuilder PostgreSQLPageSql(string strSql, DbParameter[] dbParameter, string sort, bool isAsc, int pageSize, int pageIndex)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (pageIndex == 0)
+            {
+                pageIndex = 1;
+            }
+            int num = (pageIndex - 1) * pageSize;
+            string OrderBy = "";
+
+            if (!string.IsNullOrEmpty(sort))
+            {
+                if (sort.ToUpper().IndexOf("ASC") + sort.ToUpper().IndexOf("DESC") > 0)
+                {
+                    OrderBy = " ORDER BY " + sort;
+                }
+                else
+                {
+                    OrderBy = " ORDER BY " + sort + " " + (isAsc ? "ASC" : "DESC");
+                }
+            }
+            sb.Append(strSql + OrderBy);
+            sb.Append(" LIMIT " + pageSize + " OFFSET " + num + "");
+            return sb;
+        }
+
         public static StringBuilder MySqlPageSql(string strSql, DbParameter[] dbParameter, string sort, bool isAsc, int pageSize, int pageIndex)
         {
             StringBuilder sb = new StringBuilder();

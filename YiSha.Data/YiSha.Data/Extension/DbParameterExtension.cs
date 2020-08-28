@@ -4,6 +4,7 @@ using System.Data.Common;
 using Microsoft.Data.SqlClient;
 using Oracle.ManagedDataAccess.Client;
 using MySql.Data.MySqlClient;
+using Npgsql;
 
 namespace YiSha.Data
 {
@@ -65,6 +66,14 @@ namespace YiSha.Data
                     while (i < size)
                     {
                         _dbParameter[i] = new OracleParameter(dbParameter[i].ParameterName, dbParameter[i].Value);
+                        i++;
+                    }
+                    break;
+                case DatabaseType.PostgreSQL:
+                    _dbParameter = new NpgsqlParameter[size];
+                    while (i < size)
+                    {
+                        _dbParameter[i] = new NpgsqlParameter(dbParameter[i].ParameterName, dbParameter[i].Value);
                         i++;
                     }
                     break;
