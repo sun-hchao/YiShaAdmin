@@ -105,7 +105,7 @@ namespace YiSha.Service.SystemManage
         /// <returns></returns>
         public async Task SyncDatabase()
         {
-            #region 同步SqlServer数据库
+            #region 同步PostgreSQL数据库
             await SyncPostgreSQLTable<AreaEntity>();
             await SyncPostgreSQLTable<AutoJobEntity>();
             await SyncPostgreSQLTable<AutoJobLogEntity>();
@@ -124,11 +124,11 @@ namespace YiSha.Service.SystemManage
         }
         private async Task SyncPostgreSQLTable<T>() where T : class, new()
         {
-            string sqlServerConnectionString = "Server=localhost;Database=YiShaAdmin;User Id=sa;Password=123456;";
+            string postgreSQLConnectionString = "Server=192.168.21.137;Database=yishaadmin;User ID=yishaadmin;Password=Root@123;port=5866;";
             IEnumerable<T> list = await this.BaseRepository().FindList<T>();
 
-            await new PostgreSQLDatabase(sqlServerConnectionString).Delete<T>(p => true);
-            await new PostgreSQLDatabase(sqlServerConnectionString).Insert<T>(list);
+            await new PostgreSQLDatabase(postgreSQLConnectionString).Delete<T>(p => true);
+            await new PostgreSQLDatabase(postgreSQLConnectionString).Insert<T>(list);
         }
         #endregion
 

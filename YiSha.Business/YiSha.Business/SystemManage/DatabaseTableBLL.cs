@@ -130,7 +130,8 @@ namespace YiSha.Business.SystemManage
         public async Task<TData> SyncDatabase()
         {
             TData obj = new TData();
-            await new DatabaseTableMySqlService().SyncDatabase();
+            //await new DatabaseTableMySqlService().SyncDatabase();
+            await new DatabaseTablePostgreSQLService().SyncDatabase();
             obj.Tag = 1;
             return obj;
         }
