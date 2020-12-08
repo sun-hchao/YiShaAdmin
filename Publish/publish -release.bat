@@ -16,6 +16,7 @@ del "%cd%\Api\web.config" /f /s /q /a
 del "%cd%\Api\Resource\*.*" /f /s /q /a
 
 rem 7z
-"D:\Program Files\7-Zip\7z.exe" a -t7z Publish.7z Admin Api
+rem "D:\ProgramFiles\7-Zip\7z.exe" a -t7z Publish.7z Admin Api
+"D:\ProgramFiles\7-Zip\7z.exe" a -t7z Publish.zip Admin Api
 
 pause
