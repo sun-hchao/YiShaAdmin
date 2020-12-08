@@ -10,8 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.60" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.0" />
   </ItemGroup>
@@ -19,6 +18,15 @@
   <ItemGroup>
     <ProjectReference Include="..\..\YiSha.Util\YiSha.Util\YiSha.Util.csproj" />
     <ProjectReference Include="..\YiSha.Data\YiSha.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Nhgdb">
+      <HintPath>..\..\Nhgdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Nhgdb.EntityFrameworkCore.HGDB">
+      <HintPath>..\..\Nhgdb.EntityFrameworkCore.HGDB.dll</HintPath>
+    </Reference>
   </ItemGroup>
   
 </Project>

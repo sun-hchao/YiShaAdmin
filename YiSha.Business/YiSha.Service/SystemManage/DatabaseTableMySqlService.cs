@@ -99,30 +99,30 @@ namespace YiSha.Service.SystemManage
             //await SyncSqlServerTable<UserBelongEntity>();
             //#endregion
 
-            #region 同步PostgreSQL数据库
-            await SyncPostgreSQLServerTable<AreaEntity>();
-            await SyncPostgreSQLServerTable<AutoJobEntity>();
-            await SyncPostgreSQLServerTable<AutoJobLogEntity>();
-            await SyncPostgreSQLServerTable<DataDictEntity>();
-            await SyncPostgreSQLServerTable<DataDictDetailEntity>();
-            await SyncPostgreSQLServerTable<DepartmentEntity>();
-            await SyncPostgreSQLServerTable<LogLoginEntity>();
-            await SyncPostgreSQLServerTable<MenuEntity>();
-            await SyncPostgreSQLServerTable<MenuAuthorizeEntity>();
-            await SyncPostgreSQLServerTable<NewsEntity>();
-            await SyncPostgreSQLServerTable<PositionEntity>();
-            await SyncPostgreSQLServerTable<RoleEntity>();
-            await SyncPostgreSQLServerTable<UserEntity>();
-            await SyncPostgreSQLServerTable<UserBelongEntity>();
+            #region 同步Highgo数据库
+            await SyncHighgoServerTable<AreaEntity>();
+            await SyncHighgoServerTable<AutoJobEntity>();
+            await SyncHighgoServerTable<AutoJobLogEntity>();
+            await SyncHighgoServerTable<DataDictEntity>();
+            await SyncHighgoServerTable<DataDictDetailEntity>();
+            await SyncHighgoServerTable<DepartmentEntity>();
+            await SyncHighgoServerTable<LogLoginEntity>();
+            await SyncHighgoServerTable<MenuEntity>();
+            await SyncHighgoServerTable<MenuAuthorizeEntity>();
+            await SyncHighgoServerTable<NewsEntity>();
+            await SyncHighgoServerTable<PositionEntity>();
+            await SyncHighgoServerTable<RoleEntity>();
+            await SyncHighgoServerTable<UserEntity>();
+            await SyncHighgoServerTable<UserBelongEntity>();
             #endregion
         }
-        private async Task SyncPostgreSQLServerTable<T>() where T : class, new()
+        private async Task SyncHighgoServerTable<T>() where T : class, new()
         {
-            string sqlServerConnectionString = "Server=192.168.21.134;Database=yishaadmin1;User ID=yishaadmin;Password=hg123456;port=5866;";
+            string sqlServerConnectionString = "Server=192.168.21.138;Database=yishaadmin1;User ID=yishaadmin;Password=hg123456;port=5868;";
             IEnumerable<T> list = await this.BaseRepository().FindList<T>();
 
-            await new PostgreSQLDatabase(sqlServerConnectionString).Delete<T>(p => true);
-            await new PostgreSQLDatabase(sqlServerConnectionString).Insert<T>(list);
+            await new HighgoDatabase(sqlServerConnectionString).Delete<T>(p => true);
+            await new HighgoDatabase(sqlServerConnectionString).Insert<T>(list);
         }
 
         private async Task SyncSqlServerTable<T>() where T : class, new()

@@ -14,6 +14,6 @@ namespace YiSha.Data
         SqlServer,
         MySql,
         Oracle,
-        PostgreSQL
+        Highgo
     }
 }

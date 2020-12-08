@@ -16,7 +16,7 @@ using YiSha.Util.Model;
 
 namespace YiSha.Service.SystemManage
 {
-    public class DatabaseTablePostgreSQLService : RepositoryFactory, IDatabaseTableService
+    public class DatabaseTableHighgoService : RepositoryFactory, IDatabaseTableService
     {
         #region 获取数据
         public async Task<List<TableInfo>> GetTableList(string tableName)
@@ -124,11 +124,11 @@ namespace YiSha.Service.SystemManage
         }
         private async Task SyncPostgreSQLTable<T>() where T : class, new()
         {
-            string postgreSQLConnectionString = "Server=192.168.21.137;Database=yishaadmin;User ID=yishaadmin;Password=Root@123;port=5866;";
+            string postgreSQLConnectionString = "Server=192.168.21.138;Database=yishaadmin;User ID=yishaadmin;Password=Root@123;port=5868;";
             IEnumerable<T> list = await this.BaseRepository().FindList<T>();
 
-            await new PostgreSQLDatabase(postgreSQLConnectionString).Delete<T>(p => true);
-            await new PostgreSQLDatabase(postgreSQLConnectionString).Insert<T>(list);
+            await new HighgoDatabase(postgreSQLConnectionString).Delete<T>(p => true);
+            await new HighgoDatabase(postgreSQLConnectionString).Insert<T>(list);
         }
         #endregion
 

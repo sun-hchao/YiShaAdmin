@@ -63,7 +63,7 @@ namespace YiSha.Data
             return sb;
         }
 
-        public static StringBuilder PostgreSQLPageSql(string strSql, DbParameter[] dbParameter, string sort, bool isAsc, int pageSize, int pageIndex)
+        public static StringBuilder HighgoPageSql(string strSql, DbParameter[] dbParameter, string sort, bool isAsc, int pageSize, int pageIndex)
         {
             StringBuilder sb = new StringBuilder();
             if (pageIndex == 0)

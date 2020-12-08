@@ -8,12 +8,12 @@ using YiSha.Util;
 
 namespace YiSha.Data.EF
 {
-    public class PostgreSQLDbContext : DbContext, IDisposable
+    public class HighgoDBContext : DbContext, IDisposable
     {
         private string ConnectionString { get; set; }
 
         #region 构造函数
-        public PostgreSQLDbContext(string connectionString)
+        public HighgoDBContext(string connectionString)
         {
             ConnectionString = connectionString;
         }
@@ -22,7 +22,7 @@ namespace YiSha.Data.EF
         #region 重载
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(ConnectionString, p => p.CommandTimeout(GlobalContext.SystemConfig.DBCommandTimeout));
+            optionsBuilder.UseNhgdb(ConnectionString, p => p.CommandTimeout(GlobalContext.SystemConfig.DBCommandTimeout));
             optionsBuilder.AddInterceptors(new DbCommandCustomInterceptor());
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

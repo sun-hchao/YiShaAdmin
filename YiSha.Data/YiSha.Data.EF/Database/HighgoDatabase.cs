@@ -14,15 +14,15 @@ using YiSha.Util.Extension;
 
 namespace YiSha.Data.EF
 {
-    public class PostgreSQLDatabase : IDatabase
+    public class HighgoDatabase : IDatabase
     {
         #region 构造函数
         /// <summary>
         /// 构造方法
         /// </summary>
-        public PostgreSQLDatabase(string connString)
+        public HighgoDatabase(string connString)
         {
-            dbContext = new PostgreSQLDbContext(connString);
+            dbContext = new HighgoDBContext(connString);
         }
         #endregion
 
@@ -332,7 +332,7 @@ namespace YiSha.Data.EF
             {
                 DbHelper dbHelper = new DbHelper(dbContext, dbConnection);
                 StringBuilder sb = new StringBuilder();
-                sb.Append(DatabasePageExtension.PostgreSQLPageSql(strSql, dbParameter, sort, isAsc, pageSize, pageIndex));
+                sb.Append(DatabasePageExtension.HighgoPageSql(strSql, dbParameter, sort, isAsc, pageSize, pageIndex));
                 object tempTotal = await dbHelper.ExecuteScalarAsync(CommandType.Text, DatabasePageExtension.GetCountSql(strSql), dbParameter);
                 int total = tempTotal.ParseToInt();
                 if (total > 0)

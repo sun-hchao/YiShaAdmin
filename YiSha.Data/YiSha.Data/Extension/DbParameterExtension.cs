@@ -4,7 +4,7 @@ using System.Data.Common;
 using Microsoft.Data.SqlClient;
 using Oracle.ManagedDataAccess.Client;
 using MySql.Data.MySqlClient;
-using Npgsql;
+using Nhgdb;
 
 namespace YiSha.Data
 {
@@ -69,11 +69,11 @@ namespace YiSha.Data
                         i++;
                     }
                     break;
-                case DatabaseType.PostgreSQL:
-                    _dbParameter = new NpgsqlParameter[size];
+                case DatabaseType.Highgo:
+                    _dbParameter = new NhgdbParameter[size];
                     while (i < size)
                     {
-                        _dbParameter[i] = new NpgsqlParameter(dbParameter[i].ParameterName, dbParameter[i].Value);
+                        _dbParameter[i] = new NhgdbParameter(dbParameter[i].ParameterName, dbParameter[i].Value);
                         i++;
                     }
                     break;

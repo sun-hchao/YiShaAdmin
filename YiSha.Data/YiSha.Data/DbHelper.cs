@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using YiSha.Util;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace YiSha.Data
 {
