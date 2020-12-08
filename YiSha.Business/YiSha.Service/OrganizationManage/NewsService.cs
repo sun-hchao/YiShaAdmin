@@ -81,26 +81,25 @@ namespace YiSha.Service.OrganizationManage
         #region 私有方法
         private List<DbParameter> ListFilter(NewsListParam param, StringBuilder strSql, bool bNewsContent = false)
         {
-            strSql.Append(@"SELECT  a.Id,
-                                    a.BaseModifyTime,
-                                    a.BaseModifierId,
-                                    a.NewsTitle,
-                                    a.ThumbImage,
-                                    a.NewsTag,
-                                    a.NewsAuthor,
-                                    a.NewsSort,
-                                    a.NewsDate,
-                                    a.NewsType,
-                                    a.ProvinceId,
-                                    a.CityId,
-                                    a.CountyId,
-                                    a.ViewTimes");
+            strSql.Append(@"SELECT a.Id,
+                                   a.BaseModifyTime,
+                                   a.BaseModifierId,
+                                   a.NewsTitle,
+                                   a.ThumbImage,
+                                   a.NewsTag,
+                                   a.NewsAuthor,
+                                   a.NewsSort,
+                                   a.NewsDate,
+                                   a.NewsType,
+                                   a.ProvinceId,
+                                   a.CityId,
+                                   a.CountyId,
+                                   a.ViewTimes");
             if (bNewsContent)
             {
                 strSql.Append(",a.NewsContent");
             }
-            strSql.Append(@"         FROM    SysNews a
-                            WHERE   1 = 1");
+            strSql.Append(@" FROM SysNews a WHERE 1 = 1");
             var parameter = new List<DbParameter>();
             if (param != null)
             {
